@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjtefv148ui8c"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_e27cw"]
+[ext_resource type="Texture2D" uid="uid://48n85mjk64j7" path="res://kenney_space-shooter-redux/PNG/playerShip2_green.png" id="2_y3151"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlxwn"]
+radius = 39.0
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
+position = Vector2(268, 164)
+script = ExtResource("1_e27cw")
+metadata/_edit_group_ = true
+
+[node name="EnemyGraphic" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_y3151")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_jlxwn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
